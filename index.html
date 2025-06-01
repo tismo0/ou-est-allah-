@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Où est Allah ? - La Croyance Islamique</title>
+    <title>Où est Allah ? - La Croyance Islamique Authentique</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:wght@400;500;600;700&display=swap');
         
         body {
             font-family: 'Noto Sans', sans-serif;
-            background-color: #f8f5f0;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
         }
         
         .arabic {
@@ -19,273 +20,462 @@
             font-size: 1.5rem;
             line-height: 2.5rem;
             direction: rtl;
+            text-align: right;
         }
         
         .header-bg {
-            background: linear-gradient(135deg, #1a5e63 0%, #0d3241 100%);
+            background: linear-gradient(135deg, #0d3241 0%, #1a5e63 100%);
         }
         
         .verse-card {
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border-left: 4px solid #1a5e63;
         }
         
         .verse-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left-color: #d4af37;
         }
         
         .gold-border {
-            border-image: linear-gradient(135deg, #d4af37, #f9d423) 1;
-            border-width: 3px;
-            border-style: solid;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        
+        .gold-border::after {
+            content: '';
+            position: absolute;
+            top: -3px; right: -3px; bottom: -3px; left: -3px;
+            z-index: -1;
+            background: linear-gradient(135deg, #d4af37, #f9d423);
+            border-radius: inherit;
+        }
+        
+        .hadith-card {
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hadith-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #1a5e63;
+            transition: all 0.3s ease;
+        }
+        
+        .hadith-card:hover::before {
+            width: 8px;
+            background: #d4af37;
+        }
+        
+        .scholar-card {
+            transition: all 0.3s ease;
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .scholar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scholar-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1a5e63, #0d3241);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, #1a5e63, #d4af37);
+            border-radius: 3px;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header-bg text-white shadow-lg">
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h1 class="text-3xl md:text-4xl font-bold mb-2">Où est Allah ?</h1>
-                    <p class="text-lg opacity-90">La croyance islamique selon les savants sunnites</p>
+    <header class="header-bg text-white shadow-lg relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20 z-0"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <div class="flex flex-col items-center text-center">
+                <div class="bg-white/10 p-6 rounded-full mb-6 shadow-lg floating">
+                    <i class="fas fa-mosque text-5xl"></i>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-white/10 p-3 rounded-full">
-                        <i class="fas fa-mosque text-2xl"></i>
-                    </div>
-                    <div class="bg-white/10 p-3 rounded-full">
-                        <i class="fas fa-quran text-2xl"></i>
-                    </div>
-                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Où est Allah ?</h1>
+                <p class="text-xl opacity-90 max-w-2xl">La croyance authentique selon le Coran, la Sunna et le consensus des savants</p>
+                <a href="#content" class="mt-8 animate-bounce inline-block">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
+    <main id="content" class="container mx-auto px-4 py-12">
         <!-- Introduction -->
         <section class="mb-16">
-            <div class="bg-white rounded-xl shadow-md p-6 md:p-8 gold-border">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">La Position d'Allah dans la Croyance Islamique</h2>
+            <div class="bg-white rounded-xl shadow-xl p-6 md:p-8 gold-border">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 section-title">La Position d'Allah dans la Croyance Islamique</h2>
                 <p class="text-gray-700 mb-4 leading-relaxed">
                     La question de la localisation d'Allah est fondamentale en Islam. Selon la majorité des savants sunnites, Allah est établi au-dessus de Son Trône ('Arsh), au-dessus de toute Sa création, conformément à ce qu'Il a Lui-même révélé dans le Coran et ce que le Prophète ﷺ a enseigné.
                 </p>
                 <p class="text-gray-700 leading-relaxed">
-                    Cette croyance est basée sur des preuves textuelles claires du Coran et de la Sunna, ainsi que sur le consensus des premiers savants de l'Islam.
+                    Cette croyance est basée sur des preuves textuelles claires du Coran et de la Sunna, ainsi que sur le consensus des premiers savants de l'Islam. Elle constitue l'un des fondements de la croyance islamique authentique (Aqida).
                 </p>
+                
+                <div class="mt-6 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+                    <h3 class="font-bold text-blue-800 mb-2">Points clés de la croyance :</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Allah est au-dessus de Son Trône, distinct de Sa création</li>
+                        <li>Cette élévation est réelle et non métaphorique</li>
+                        <li>Allah est proche de nous par Sa science et Sa puissance</li>
+                        <li>Nous acceptons ces attributs sans demander "comment"</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- Quranic Evidence -->
         <section class="mb-16">
-            <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Preuves Coraniques</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center section-title">Preuves Coraniques</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Verse 1 -->
-                <div class="verse-card bg-white rounded-xl shadow-md p-6 hover:shadow-lg">
-                    <div class="arabic text-gray-800 mb-4 text-right">
+                <div class="verse-card rounded-xl shadow-md p-6 animate-fadeIn">
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
                         ﴿ٱلرَّحۡمَـٰنُ عَلَى ٱلۡعَرۡشِ ٱسۡتَوَىٰ﴾
                     </div>
                     <p class="text-gray-700 mb-2 font-medium">Sourate Taha (20:5)</p>
                     <p class="text-gray-600">"Le Tout Miséricordieux S'est établi sur le Trône."</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-book mr-2"></i> Tafsir Ibn Kathir : "Ce verset prouve qu'Allah est au-dessus du Trône, comme l'ont dit les Salafs."
+                    </div>
                 </div>
                 
                 <!-- Verse 2 -->
-                <div class="verse-card bg-white rounded-xl shadow-md p-6 hover:shadow-lg">
-                    <div class="arabic text-gray-800 mb-4 text-right">
+                <div class="verse-card rounded-xl shadow-md p-6 animate-fadeIn">
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
                         ﴿إِنَّ رَبَّكُمُ ٱللَّهُ ٱلَّذِی خَلَقَ ٱلسَّمَـٰوَ‌ٰتِ وَٱلۡأَرۡضَ فِی سِتَّةِ أَیَّامࣲ ثُمَّ ٱسۡتَوَىٰ عَلَى ٱلۡعَرۡشِ﴾
                     </div>
                     <p class="text-gray-700 mb-2 font-medium">Sourate Al-A'raf (7:54)</p>
                     <p class="text-gray-600">"Votre Seigneur est Allah qui a créé les cieux et la terre en six jours, puis S'est établi sur le Trône."</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-book mr-2"></i> Tafsir At-Tabari : "L'établissement sur le Trône est réel et fait partie des attributs d'Allah."
+                    </div>
                 </div>
                 
                 <!-- Verse 3 -->
-                <div class="verse-card bg-white rounded-xl shadow-md p-6 hover:shadow-lg">
-                    <div class="arabic text-gray-800 mb-4 text-right">
+                <div class="verse-card rounded-xl shadow-md p-6 animate-fadeIn">
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
                         ﴿أَأَمِنتُم مَّن فِی ٱلسَّمَاۤءِ أَن یَخۡسِفَ بِكُمُ ٱلۡأَرۡضَ فَإِذَا هِیَ تَمُورُ﴾
                     </div>
                     <p class="text-gray-700 mb-2 font-medium">Sourate Al-Mulk (67:16)</p>
                     <p class="text-gray-600">"Êtes-vous à l'abri que Celui qui est au ciel vous enfouisse en terre ?"</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-book mr-2"></i> Tafsir Al-Qurtubi : "Le ciel est mentionné comme lieu où Allah est établi, sans comment."
+                    </div>
                 </div>
                 
                 <!-- Verse 4 -->
-                <div class="verse-card bg-white rounded-xl shadow-md p-6 hover:shadow-lg">
-                    <div class="arabic text-gray-800 mb-4 text-right">
+                <div class="verse-card rounded-xl shadow-md p-6 animate-fadeIn">
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
                         ﴿یَخَافُونَ رَبَّهُم مِّن فَوۡقِهِمۡ وَیَفۡعَلُونَ مَا یُؤۡمَرُونَ﴾
                     </div>
                     <p class="text-gray-700 mb-2 font-medium">Sourate An-Nahl (16:50)</p>
                     <p class="text-gray-600">"Ils craignent leur Seigneur au-dessus d'eux et font ce qui leur est commandé."</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-book mr-2"></i> Tafsir As-Sa'di : "Les anges craignent Allah qui est au-dessus d'eux, ce qui prouve Son élévation."
+                    </div>
                 </div>
                 
                 <!-- Verse 5 -->
-                <div class="verse-card bg-white rounded-xl shadow-md p-6 hover:shadow-lg">
-                    <div class="arabic text-gray-800 mb-4 text-right">
+                <div class="verse-card rounded-xl shadow-md p-6 animate-fadeIn">
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
                         ﴿إِلَیۡهِ یَصۡعَدُ ٱلۡكَلِمُ ٱلطَّیِّبُ وَٱلۡعَمَلُ ٱلصَّـٰلِحُ یَرۡفَعُهُۥ﴾
                     </div>
                     <p class="text-gray-700 mb-2 font-medium">Sourate Fatir (35:10)</p>
                     <p class="text-gray-600">"Vers Lui monte la bonne parole, et Il élève la bonne action."</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-book mr-2"></i> Tafsir Al-Baghawi : "La montée vers Lui indique qu'Allah est au-dessus."
+                    </div>
                 </div>
                 
                 <!-- Verse 6 -->
-                <div class="verse-card bg-white rounded-xl shadow-md p-6 hover:shadow-lg">
-                    <div class="arabic text-gray-800 mb-4 text-right">
+                <div class="verse-card rounded-xl shadow-md p-6 animate-fadeIn">
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
                         ﴿تَعۡرُجُ ٱلۡمَلَـٰۤىِٕكَةُ وَٱلرُّوحُ إِلَیۡهِ فِی یَوۡمࣲ كَانَ مِقۡدَارُهُۥ خَمۡسِینَ أَلۡفَ سَنَةࣲ﴾
                     </div>
                     <p class="text-gray-700 mb-2 font-medium">Sourate Al-Ma'arij (70:4)</p>
                     <p class="text-gray-600">"Les anges et l'Esprit montent vers Lui en un jour dont la durée est de cinquante mille ans."</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-book mr-2"></i> Tafsir Ibn Jarir : "La montée des anges prouve qu'Allah est au-dessus de Sa création."
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Hadith Evidence -->
         <section class="mb-16">
-            <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Preuves de la Sunna</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center section-title">Preuves de la Sunna</h2>
             
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Hadith 1 -->
-                <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="hadith-card rounded-xl shadow-md p-6 animate-fadeIn">
                     <div class="flex items-start mb-4">
                         <div class="bg-green-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-book text-green-600"></i>
+                            <i class="fas fa-book-open text-green-600"></i>
                         </div>
                         <div>
                             <h3 class="font-bold text-lg text-gray-800">Hadith de Mu'awiya ibn Al-Hakam</h3>
-                            <p class="text-gray-600 text-sm">Rapporté par Muslim</p>
+                            <p class="text-gray-600 text-sm">Rapporté par Muslim (537)</p>
                         </div>
                     </div>
-                    <div class="arabic text-gray-800 mb-4 text-right">
-                        «أَيْنَ اللهُ؟» فَقَالَ: «فِي السَّمَاءِ»
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
+                        قَالَ: كَانَتْ لِي جَارِيَةٌ تَرْعَى غَنَمًا لِي قِبَلَ أُحُدٍ وَالْجَوَّانِيَّةِ، فَاطَّلَعْتُ ذَاتَ يَوْمٍ فَإِذَا الذِّئْبُ قَدْ ذَهَبَ بِشَاةٍ مِنْ غَنَمِهَا، وَأَنَا رَجُلٌ مِنْ بَنِي آدَمَ آسَفُ كَمَا يَأْسَفُونَ، لَكِنِّي صَكَكْتُهَا صَكَّةً، فَأَتَيْتُ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فَعَظَّمَ ذَلِكَ عَلَيَّ، قُلْتُ: يَا رَسُولَ اللَّهِ أَفَلَا أُعْتِقُهَا؟ قَالَ: «ائْتِنِي بِهَا»، فَأَتَيْتُهُ بِهَا، فَقَالَ لَهَا: «أَيْنَ اللَّهُ؟» فَقَالَتْ: فِي السَّمَاءِ، قَالَ: «مَنْ أَنَا؟» قَالَتْ: أَنْتَ رَسُولُ اللَّهِ، قَالَ: «أَعْتِقْهَا فَإِنَّهَا مُؤْمِنَةٌ»
                     </div>
-                    <p class="text-gray-700">"Où est Allah ?" Il répondit : "Au ciel."</p>
-                    <p class="text-gray-500 mt-2 text-sm">Le Prophète ﷺ approuva la réponse de l'esclave qui disait qu'Allah est au ciel.</p>
+                    <p class="text-gray-700 mb-2 font-medium">Traduction :</p>
+                    <p class="text-gray-600">
+                        Mu'awiya ibn Al-Hakam a dit : "J'avais une servante qui gardait mes moutons du côté de Uhud et Al-Jawwaniyya. Un jour, je me suis rendu compte qu'un loup avait emporté une brebis du troupeau. Étant un être humain, je me suis mis en colère comme les autres le feraient, et je l'ai giflée. Puis je suis allé voir le Messager d'Allah (ﷺ) qui a considéré cela comme grave. J'ai dit : 'Ô Messager d'Allah, devrais-je l'affranchir ?' Il a dit : 'Amène-la moi'. Je la lui ai amenée et il lui a demandé : 'Où est Allah ?' Elle a répondu : 'Au ciel'. Il a demandé : 'Qui suis-je ?' Elle a dit : 'Tu es le Messager d'Allah'. Il a dit : 'Affranchis-la, car elle est croyante'."
+                    </p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-info-circle mr-2"></i> Ce hadith prouve que la croyance qu'Allah est au ciel est une caractéristique des croyants.
+                    </div>
                 </div>
                 
                 <!-- Hadith 2 -->
-                <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="hadith-card rounded-xl shadow-md p-6 animate-fadeIn">
                     <div class="flex items-start mb-4">
                         <div class="bg-green-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-book text-green-600"></i>
+                            <i class="fas fa-book-open text-green-600"></i>
                         </div>
                         <div>
                             <h3 class="font-bold text-lg text-gray-800">Hadith d'Abdullah ibn Amr</h3>
-                            <p class="text-gray-600 text-sm">Rapporté par Al-Bukhari</p>
+                            <p class="text-gray-600 text-sm">Rapporté par Al-Bukhari (3199)</p>
                         </div>
                     </div>
-                    <div class="arabic text-gray-800 mb-4 text-right">
-                        «إِنَّ اللَّهَ كَتَبَ كِتَابًا قَبْلَ أَنْ يَخْلُقَ الْخَلْقَ: إِنَّ رَحْمَتِي سَبَقَتْ غَضَبِي، وَهُوَ مَكْتُوبٌ عِنْدَهُ فَوْقَ الْعَرْشِ»
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
+                        عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو، قَالَ: قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ: «إِنَّ اللَّهَ كَتَبَ كِتَابًا قَبْلَ أَنْ يَخْلُقَ الْخَلْقَ: إِنَّ رَحْمَتِي سَبَقَتْ غَضَبِي، وَهُوَ مَكْتُوبٌ عِنْدَهُ فَوْقَ الْعَرْشِ»
                     </div>
-                    <p class="text-gray-700">"Allah a écrit un décret avant de créer la création : 'Ma miséricorde dépasse Ma colère', et cela est écrit auprès de Lui au-dessus du Trône."</p>
+                    <p class="text-gray-700 mb-2 font-medium">Traduction :</p>
+                    <p class="text-gray-600">
+                        D'après Abdullah ibn Amr, le Prophète (ﷺ) a dit : "Allah a écrit un décret avant de créer la création : 'Ma miséricorde dépasse Ma colère', et cela est écrit auprès de Lui au-dessus du Trône."
+                    </p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-info-circle mr-2"></i> Ce hadith mentionne explicitement qu'Allah est au-dessus du Trône.
+                    </div>
                 </div>
                 
                 <!-- Hadith 3 -->
-                <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="hadith-card rounded-xl shadow-md p-6 animate-fadeIn">
                     <div class="flex items-start mb-4">
                         <div class="bg-green-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-book text-green-600"></i>
+                            <i class="fas fa-book-open text-green-600"></i>
                         </div>
                         <div>
                             <h3 class="font-bold text-lg text-gray-800">Hadith d'Abu Huraira</h3>
-                            <p class="text-gray-600 text-sm">Rapporté par Al-Bukhari et Muslim</p>
+                            <p class="text-gray-600 text-sm">Rapporté par Al-Bukhari (1145) et Muslim (758)</p>
                         </div>
                     </div>
-                    <div class="arabic text-gray-800 mb-4 text-right">
-                        «يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الآخِرُ»
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
+                        عَنْ أَبِي هُرَيْرَةَ، أَنَّ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: «يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الآخِرُ، يَقُولُ: مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ؟ مَنْ يَسْأَلُنِي فَأُعْطِيَهُ؟ مَنْ يَسْتَغْفِرُنِي فَأَغْفِرَ لَهُ؟»
                     </div>
-                    <p class="text-gray-700">"Notre Seigneur descend chaque nuit au ciel le plus proche lorsqu'il reste le dernier tiers de la nuit."</p>
-                    <p class="text-gray-500 mt-2 text-sm">Ce hadith montre qu'Allah est au-dessus de Sa création puisqu'Il descend de Sa position élevée.</p>
+                    <p class="text-gray-700 mb-2 font-medium">Traduction :</p>
+                    <p class="text-gray-600">
+                        D'après Abu Huraira, le Messager d'Allah (ﷺ) a dit : "Notre Seigneur descend chaque nuit au ciel le plus proche lorsqu'il reste le dernier tiers de la nuit et dit : 'Qui M'invoque pour que Je lui réponde ? Qui Me demande pour que Je lui donne ? Qui Me demande pardon pour que Je lui pardonne ?'"
+                    </p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-info-circle mr-2"></i> Ce hadith montre qu'Allah est au-dessus de Sa création puisqu'Il descend de Sa position élevée.
+                    </div>
                 </div>
                 
                 <!-- Hadith 4 -->
-                <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="hadith-card rounded-xl shadow-md p-6 animate-fadeIn">
                     <div class="flex items-start mb-4">
                         <div class="bg-green-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-book text-green-600"></i>
+                            <i class="fas fa-book-open text-green-600"></i>
                         </div>
                         <div>
                             <h3 class="font-bold text-lg text-gray-800">Hadith d'Abu Musa Al-Ash'ari</h3>
-                            <p class="text-gray-600 text-sm">Rapporté par Al-Bukhari</p>
+                            <p class="text-gray-600 text-sm">Rapporté par Al-Bukhari (1145)</p>
                         </div>
                     </div>
-                    <div class="arabic text-gray-800 mb-4 text-right">
-                        «إِنَّ اللَّهَ لاَ يَنَامُ، وَلاَ يَنْبَغِي لَهُ أَنْ يَنَامَ، يَخْفِضُ الْقِسْطَ وَيَرْفَعُهُ، يُرْفَعُ إِلَيْهِ عَمَلُ اللَّيْلِ قَبْلَ النَّهَارِ، وَعَمَلُ النَّهَارِ قَبْلَ اللَّيْلِ»
+                    <div class="arabic text-gray-800 mb-4 bg-gray-100 p-4 rounded-lg">
+                        عَنْ أَبِي مُوسَى الأَشْعَرِيِّ، قَالَ: قَامَ فِينَا رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ بِخَمْسِ كَلِمَاتٍ، فَقَالَ: «إِنَّ اللَّهَ لاَ يَنَامُ، وَلاَ يَنْبَغِي لَهُ أَنْ يَنَامَ، يَخْفِضُ الْقِسْطَ وَيَرْفَعُهُ، يُرْفَعُ إِلَيْهِ عَمَلُ اللَّيْلِ قَبْلَ النَّهَارِ، وَعَمَلُ النَّهَارِ قَبْلَ اللَّيْلِ، حِجَابُهُ النُّورُ لَوْ كَشَفَهُ لَأَحْرَقَتْ سُبُحَاتُ وَجْهِهِ مَا انْتَهَى إِلَيْهِ بَصَرُهُ مِنْ خَلْقِهِ»
                     </div>
-                    <p class="text-gray-700">"Allah ne dort pas et il ne Lui convient pas de dormir. Il abaisse la balance et l'élève. Les actions de la nuit Lui sont présentées avant celles du jour, et les actions du jour avant celles de la nuit."</p>
-                    <p class="text-gray-500 mt-2 text-sm">Les actions "Lui sont présentées" indique qu'elles montent vers Lui.</p>
+                    <p class="text-gray-700 mb-2 font-medium">Traduction :</p>
+                    <p class="text-gray-600">
+                        D'après Abu Musa Al-Ash'ari, le Messager d'Allah (ﷺ) s'est levé parmi nous et a dit cinq paroles : "Allah ne dort pas et il ne Lui convient pas de dormir. Il abaisse la balance et l'élève. Les actions de la nuit Lui sont présentées avant celles du jour, et les actions du jour avant celles de la nuit. Son voile est la lumière - s'Il le retirait, la splendeur de Son visage brûlerait toute créature que Son regard atteint."
+                    </p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-info-circle mr-2"></i> Les actions "Lui sont présentées" indique qu'elles montent vers Lui.
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Scholars' Consensus -->
         <section class="mb-16">
-            <div class="bg-white rounded-xl shadow-md p-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">Consensus des Savants</h2>
+            <div class="bg-white rounded-xl shadow-xl p-8 gold-border">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 section-title">Consensus des Savants</h2>
                 
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Les Salafs (Premières Générations)</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-2 rounded-full mr-4 mt-1">
-                                    <i class="fas fa-user text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Imam Malik (93-179H)</h4>
-                                    <p class="text-gray-600">"Allah est au-dessus du ciel, et Sa science est partout."</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-2 rounded-full mr-4 mt-1">
-                                    <i class="fas fa-user text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Imam Ahmad ibn Hanbal (164-241H)</h4>
-                                    <p class="text-gray-600">"Allah est au-dessus de Son Trône, distinct de Sa création, et Sa science est partout."</p>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Les Salafs (Premières Générations)</h3>
+                        <div class="space-y-6">
+                            <!-- Scholar 1 -->
+                            <div class="scholar-card p-6 shadow-md">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-user text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Imam Malik (93-179H)</h4>
+                                        <p class="text-gray-600 mb-2">Fondateur de l'école malikite</p>
+                                        <div class="arabic text-gray-800 mb-3 bg-gray-100 p-3 rounded-lg">
+                                            «اللَّهُ فِي السَّمَاءِ، وَعِلْمُهُ فِي كُلِّ مَكَانٍ»
+                                        </div>
+                                        <p class="text-gray-700">"Allah est au ciel, et Sa science est partout."</p>
+                                        <p class="text-gray-500 text-sm mt-2">Source : Al-'Uluw d'Adh-Dhahabi</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-2 rounded-full mr-4 mt-1">
-                                    <i class="fas fa-user text-blue-600"></i>
+                            <!-- Scholar 2 -->
+                            <div class="scholar-card p-6 shadow-md">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-user text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Imam Ahmad ibn Hanbal (164-241H)</h4>
+                                        <p class="text-gray-600 mb-2">Fondateur de l'école hanbalite</p>
+                                        <div class="arabic text-gray-800 mb-3 bg-gray-100 p-3 rounded-lg">
+                                            «إِنَّ اللَّهَ فَوْقَ عَرْشِهِ، بَائِنٌ مِنْ خَلْقِهِ، وَعِلْمُهُ مَعَهُمْ أَيْنَ مَا كَانُوا»
+                                        </div>
+                                        <p class="text-gray-700">"Allah est au-dessus de Son Trône, distinct de Sa création, et Sa science est avec eux où qu'ils soient."</p>
+                                        <p class="text-gray-500 text-sm mt-2">Source : Ar-Radd 'ala Al-Jahmiyya</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Imam Ash-Shafi'i (150-204H)</h4>
-                                    <p class="text-gray-600">"Notre Seigneur est au-dessus de Son Trône comme Il S'est Lui-même décrit."</p>
+                            </div>
+                            
+                            <!-- Scholar 3 -->
+                            <div class="scholar-card p-6 shadow-md">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-user text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Imam Ash-Shafi'i (150-204H)</h4>
+                                        <p class="text-gray-600 mb-2">Fondateur de l'école shafi'ite</p>
+                                        <div class="arabic text-gray-800 mb-3 bg-gray-100 p-3 rounded-lg">
+                                            «القَوْلُ فِي السُّنَّةِ الَّتِي أَنَا عَلَيْهَا وَرَأَيْتُ عَلَيْهَا الَّذِينَ رَأَيْتُهُمْ... أَنَّ اللَّهَ عَلَى عَرْشِهِ فِي سَمَائِهِ»
+                                        </div>
+                                        <p class="text-gray-700">"La position que je suis et que j'ai vu suivre par ceux que j'ai rencontrés... est qu'Allah est sur Son Trône dans Son ciel."</p>
+                                        <p class="text-gray-500 text-sm mt-2">Source : Al-'Uluw d'Adh-Dhahabi</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Les Savants Ultérieurs</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-2 rounded-full mr-4 mt-1">
-                                    <i class="fas fa-user-graduate text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Ibn Taymiyya (661-728H)</h4>
-                                    <p class="text-gray-600">"Les preuves du Coran, de la Sunna et du consensus montrent qu'Allah est au-dessus de Sa création, établi sur Son Trône."</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-2 rounded-full mr-4 mt-1">
-                                    <i class="fas fa-user-graduate text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Ibn Kathir (700-774H)</h4>
-                                    <p class="text-gray-600">"Les musulmans sont unanimes à dire qu'Allah est au-dessus de Son Trône, au-dessus de tous les cieux."</p>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Les Savants Ultérieurs</h3>
+                        <div class="space-y-6">
+                            <!-- Scholar 4 -->
+                            <div class="scholar-card p-6 shadow-md">
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-user-graduate text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Ibn Taymiyya (661-728H)</h4>
+                                        <p class="text-gray-600 mb-2">Savant hanbalite</p>
+                                        <div class="arabic text-gray-800 mb-3 bg-gray-100 p-3 rounded-lg">
+                                            «أَجْمَعَ السَّلَفُ عَلَى أَنَّ اللَّهَ فَوْقَ عَرْشِهِ، عَلَى مَا يَلِيقُ بِجَلَالِهِ»
+                                        </div>
+                                        <p class="text-gray-700">"Les Salafs sont unanimes qu'Allah est au-dessus de Son Trône, d'une manière qui convient à Sa majesté."</p>
+                                        <p class="text-gray-500 text-sm mt-2">Source : Majmu' Al-Fatawa</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-2 rounded-full mr-4 mt-1">
-                                    <i class="fas fa-user-graduate text-purple-600"></i>
+                            <!-- Scholar 5 -->
+                            <div class="scholar-card p-6 shadow-md">
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-user-graduate text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Ibn Kathir (700-774H)</h4>
+                                        <p class="text-gray-600 mb-2">Historien et exégète</p>
+                                        <div class="arabic text-gray-800 mb-3 bg-gray-100 p-3 rounded-lg">
+                                            «وَأَجْمَعَ الْمُسْلِمُونَ مِنَ السَّلَفِ وَالْخَلَفِ عَلَى أَنَّ اللَّهَ تَعَالَى فَوْقَ سَمَاوَاتِهِ عَلَى عَرْشِهِ»
+                                        </div>
+                                        <p class="text-gray-700">"Les musulmans, anciens et contemporains, sont unanimes qu'Allah est au-dessus de Ses cieux, sur Son Trône."</p>
+                                        <p class="text-gray-500 text-sm mt-2">Source : Tafsir Ibn Kathir</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Al-Albani (1914-1999)</h4>
-                                    <p class="text-gray-600">"La croyance qu'Allah est au-dessus de Son Trône est la croyance des Salafs et doit être acceptée sans altération."</p>
+                            </div>
+                            
+                            <!-- Scholar 6 -->
+                            <div class="scholar-card p-6 shadow-md">
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-user-graduate text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Al-Albani (1914-1999)</h4>
+                                        <p class="text-gray-600 mb-2">Muhaddith contemporain</p>
+                                        <div class="arabic text-gray-800 mb-3 bg-gray-100 p-3 rounded-lg">
+                                            «اعْلَمْ أَنَّ الْعَقِيدَةَ الصَّحِيحَةَ الَّتِي كَانَ عَلَيْهَا سَلَفُ الْأُمَّةِ... هِيَ إِثْبَاتُ أَنَّ اللَّهَ فَوْقَ عَرْشِهِ»
+                                        </div>
+                                        <p class="text-gray-700">"Sache que la croyance correcte des Salafs... est d'affirmer qu'Allah est au-dessus de Son Trône."</p>
+                                        <p class="text-gray-500 text-sm mt-2">Source : Mukhtasar Al-'Uluw</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -296,36 +486,69 @@
 
         <!-- Explanation -->
         <section class="mb-16">
-            <div class="bg-white rounded-xl shadow-md p-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">Explication de la Croyance</h2>
+            <div class="bg-white rounded-xl shadow-xl p-8 gold-border">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 section-title">Explication de la Croyance</h2>
                 
                 <div class="space-y-6">
-                    <div class="p-5 bg-blue-50 rounded-lg">
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-600">
                         <h3 class="text-xl font-semibold text-blue-800 mb-3">1. Allah est au-dessus de Son Trône</h3>
-                        <p class="text-gray-700">
+                        <p class="text-gray-700 mb-4">
                             Les textes du Coran et de la Sunna indiquent clairement qu'Allah est établi sur Son Trône ('Arsh) qui est au-dessus de tous les cieux. Cela ne signifie pas qu'Allah a besoin du Trône ou qu'Il est limité par lui, mais cela montre Sa grandeur et Sa supériorité sur Sa création.
                         </p>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-gray-700 font-medium mb-2">Preuves :</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Versets mentionnant l'établissement sur le Trône (20:5, 7:54, etc.)</li>
+                                <li>Hadiths mentionnant qu'Allah est au ciel</li>
+                                <li>Consensus des Salafs sur cette croyance</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="p-5 bg-green-50 rounded-lg">
+                    <div class="p-6 bg-green-50 rounded-lg border-l-4 border-green-600">
                         <h3 class="text-xl font-semibold text-green-800 mb-3">2. Allah est distinct de Sa création</h3>
-                        <p class="text-gray-700">
+                        <p class="text-gray-700 mb-4">
                             Allah n'est pas mélangé avec Sa création ni présent partout dans le sens physique. Il est séparé de Sa création tout en étant proche d'elle par Sa science, Son ouïe et Sa vue. Comme le dit le Coran : "Il n'y a rien qui Lui ressemble" (42:11).
                         </p>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-gray-700 font-medium mb-2">Points clés :</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Allah n'est pas dans Ses créatures</li>
+                                <li>Allah n'est pas partout physiquement</li>
+                                <li>Allah est séparé de Sa création par Son essence</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="p-5 bg-yellow-50 rounded-lg">
+                    <div class="p-6 bg-yellow-50 rounded-lg border-l-4 border-yellow-600">
                         <h3 class="text-xl font-semibold text-yellow-800 mb-3">3. La proximité d'Allah</h3>
-                        <p class="text-gray-700">
+                        <p class="text-gray-700 mb-4">
                             Bien qu'Allah soit au-dessus de Son Trône, Il est proche de Ses serviteurs par Sa science et Sa puissance. Le Coran dit : "Et quand Mes serviteurs t'interrogent sur Moi... Je suis tout proche" (2:186). Cette proximité n'implique pas une présence physique partout.
                         </p>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-gray-700 font-medium mb-2">Explications :</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Proximité par la science et la connaissance</li>
+                                <li>Proximité par l'exaucement des invocations</li>
+                                <li>Proximité par la miséricorde et la bienveillance</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="p-5 bg-purple-50 rounded-lg">
+                    <div class="p-6 bg-purple-50 rounded-lg border-l-4 border-purple-600">
                         <h3 class="text-xl font-semibold text-purple-800 mb-3">4. Sans demander "comment"</h3>
-                        <p class="text-gray-700">
-                            Nous croyons à ces attributs sans chercher à comprendre "comment" (bila kayf), car la réalité de l'établissement d'Allah sur Son Trône nous échappe. Nous acceptons les textes tels qu'ils sont venus, sans altération ni négation.
+                        <p class="text-gray-700 mb-4">
+                            Nous croyons à ces attributs sans chercher à comprendre "comment" (bila kayf), car la réalité de l'établissement d'Allah sur Son Trône nous échappe. Nous acceptons les textes tels qu'ils sont venus, sans altération ni négation, conformément à la méthodologie des Salafs.
                         </p>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-gray-700 font-medium mb-2">Méthodologie des Salafs :</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Accepter les textes sans altération (tahrif)</li>
+                                <li>Sans négation (ta'til)</li>
+                                <li>Sans demander "comment" (takyif)</li>
+                                <li>Sans comparaison (tamthil)</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -333,29 +556,53 @@
 
         <!-- Misconceptions -->
         <section class="mb-16">
-            <div class="bg-white rounded-xl shadow-md p-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">Réfutation des Erreurs Courantes</h2>
+            <div class="bg-white rounded-xl shadow-xl p-8 gold-border">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 section-title">Réfutation des Erreurs Courantes</h2>
                 
                 <div class="space-y-6">
-                    <div class="p-5 bg-red-50 rounded-lg">
+                    <div class="p-6 bg-red-50 rounded-lg border-l-4 border-red-600">
                         <h3 class="text-xl font-semibold text-red-800 mb-3">1. Allah est partout ?</h3>
-                        <p class="text-gray-700">
+                        <p class="text-gray-700 mb-4">
                             Certains interprètent mal la proximité d'Allah pour dire qu'Il est partout physiquement. C'est une erreur. Allah est au-dessus de Son Trône tout en étant proche par Sa science et Sa puissance. Le Coran distingue clairement entre la position d'Allah (au-dessus) et Sa science (partout).
                         </p>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-gray-700 font-medium mb-2">Réfutation :</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Les textes mentionnent clairement qu'Allah est au-dessus</li>
+                                <li>La proximité est expliquée par Sa science, pas par Son essence</li>
+                                <li>Les Salafs ont toujours rejeté l'idée qu'Allah est partout physiquement</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="p-5 bg-orange-50 rounded-lg">
+                    <div class="p-6 bg-orange-50 rounded-lg border-l-4 border-orange-600">
                         <h3 class="text-xl font-semibold text-orange-800 mb-3">2. L'interprétation métaphorique</h3>
-                        <p class="text-gray-700">
+                        <p class="text-gray-700 mb-4">
                             Certains groupes interprètent les versets sur l'élévation d'Allah de manière métaphorique (comme "l'élévation du pouvoir"). Cette interprétation contredit le sens apparent des textes et le consensus des premiers savants. Les Salafs acceptaient ces attributs sans altération.
                         </p>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-gray-700 font-medium mb-2">Réfutation :</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Les Salafs n'ont jamais interprété ces attributs métaphoriquement</li>
+                                <li>Cette méthodologie est une innovation (bid'a)</li>
+                                <li>Elle conduit à nier les attributs d'Allah</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="p-5 bg-indigo-50 rounded-lg">
+                    <div class="p-6 bg-indigo-50 rounded-lg border-l-4 border-indigo-600">
                         <h3 class="text-xl font-semibold text-indigo-800 mb-3">3. La question du "comment"</h3>
-                        <p class="text-gray-700">
-                            Demander "comment" Allah est établi sur Son Trône est une innovation, car cela implique de comparer Allah à Sa création. Nous croyons à ces attributs sans chercher à les imaginer ou les comparer aux créatures.
+                        <p class="text-gray-700 mb-4">
+                            Demander "comment" Allah est établi sur Son Trône est une innovation, car cela implique de comparer Allah à Sa création. Nous croyons à ces attributs sans chercher à les imaginer ou les comparer aux créatures, conformément à la parole d'Allah : "Il n'y a rien qui Lui ressemble" (42:11).
                         </p>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-gray-700 font-medium mb-2">Réfutation :</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>La réalité des attributs d'Allah nous est inconnaissable</li>
+                                <li>Demander "comment" est une innovation des groupes égarés</li>
+                                <li>Les Salafs se contentaient d'affirmer les attributs sans chercher à les imaginer</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -363,16 +610,20 @@
 
         <!-- Conclusion -->
         <section>
-            <div class="bg-gradient-to-r from-blue-600 to-teal-600 rounded-xl shadow-lg p-8 text-white">
-                <h2 class="text-2xl font-bold mb-4">Conclusion</h2>
-                <p class="mb-4 leading-relaxed">
-                    La croyance correcte, conforme au Coran, à la Sunna et au consensus des savants sunnites, est qu'Allah est au-dessus de Son Trône, au-dessus de tous les cieux, distinct de Sa création. Cette croyance est basée sur des preuves textuelles claires et doit être acceptée sans altération ni négation.
-                </p>
-                <p class="leading-relaxed">
-                    Nous demandons à Allah de nous maintenir sur la croyance des pieux prédécesseurs et de nous protéger contre les innovations et les égarements.
-                </p>
-                <div class="arabic text-xl mt-6 text-right">
-                    سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُونَ وَسَلَامٌ عَلَى الْمُرْسَلِينَ وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+            <div class="bg-gradient-to-r from-blue-600 to-teal-600 rounded-xl shadow-2xl p-8 text-white relative overflow-hidden">
+                <div class="absolute inset-0 bg-white/10 z-0"></div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Conclusion</h2>
+                    <p class="mb-4 leading-relaxed">
+                        La croyance correcte, conforme au Coran, à la Sunna et au consensus des savants sunnites, est qu'Allah est au-dessus de Son Trône, au-dessus de tous les cieux, distinct de Sa création. Cette croyance est basée sur des preuves textuelles claires et doit être acceptée sans altération ni négation.
+                    </p>
+                    <p class="leading-relaxed mb-6">
+                        Nous demandons à Allah de nous maintenir sur la croyance des pieux prédécesseurs et de nous protéger contre les innovations et les égarements. Que les éloges d'Allah et Sa paix soient sur notre Prophète Muhammad, sa famille et tous ses compagnons.
+                    </p>
+                    <div class="arabic text-2xl mt-6 text-right bg-white/10 p-4 rounded-lg">
+                        سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُونَ وَسَلَامٌ عَلَى الْمُرْسَلِينَ وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+                    </div>
+                    <p class="text-white/90 mt-4">"Gloire à ton Seigneur, le Seigneur de la puissance. Il est au-dessus de ce qu'ils décrivent. Et paix sur les messagers, et louange à Allah, Seigneur de l'univers." (37:180-182)</p>
                 </div>
             </div>
         </section>
@@ -382,37 +633,59 @@
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
                     <h3 class="text-xl font-bold mb-2">Où est Allah ?</h3>
                     <p class="text-gray-400">La croyance islamique authentique</p>
+                    <div class="mt-4">
+                        <a href="https://www.instagram.com/ayoubsyfd/" target="_blank" class="text-gray-400 hover:text-white transition inline-flex items-center">
+                            <i class="fab fa-instagram mr-2"></i> ayoubsyfd
+                        </a>
+                    </div>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/ayoubsyfd/" target="_blank" class="text-gray-400 hover:text-white transition flex items-center gap-1">
-    <i class="fab fa-instagram"></i> ayoubsyfd
-</a>
-
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-6 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fas fa-home text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fas fa-info-circle text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fas fa-book text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <p class="text-gray-400 text-sm">Pour plus d'informations, consultez les ouvrages des savants sunnites</p>
+                    </div>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
                 <p>© 2025 Tous droits réservés Ayyouub. Site basé sur les preuves du Coran et de la Sunna</p>
+                <p class="text-xs mt-2">Sources principales : Al-'Uluw d'Adh-Dhahabi, Mukhtasar Al-'Uluw d'Al-Albani, Tafsir Ibn Kathir</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple script to enhance user experience
+        // Enhanced script with animations and interactivity
         document.addEventListener('DOMContentLoaded', function() {
-            // Add smooth scrolling to all links
+            // Smooth scrolling for all links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
             
-            // Add animation to verse cards when they come into view
+            // Animation for all cards when they come into view
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -421,8 +694,31 @@
                 });
             }, {threshold: 0.1});
             
-            document.querySelectorAll('.verse-card').forEach(card => {
-                observer.observe(card);
+            document.querySelectorAll('.verse-card, .hadith-card, .scholar-card, .gold-border').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Back to top button
+            const backToTop = document.createElement('div');
+            backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            backToTop.className = 'fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg cursor-pointer opacity-0 invisible transition-all duration-300 z-50';
+            document.body.appendChild(backToTop);
+            
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.remove('opacity-0', 'invisible');
+                    backToTop.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTop.classList.remove('opacity-100', 'visible');
+                    backToTop.classList.add('opacity-0', 'invisible');
+                }
             });
         });
     </script>
